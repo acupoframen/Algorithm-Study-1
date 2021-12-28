@@ -11,4 +11,4 @@ for i in range(41):
 
 for i in range(n):
   num=int(sys.stdin.readline())
-  print(data[num][0],data[num[1]])
+  print(data[num][0],data[num][1])
