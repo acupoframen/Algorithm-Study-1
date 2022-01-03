@@ -1,14 +1,14 @@
-import sys
-n=int(sys.stdin.readline())
+n=int(input())
 data=[]
-for i in range(41):
-  if i==0:
-    data.append([1,0])
-  elif i==1:
-    data.append([0,1])
-  else:
-    data.append([data[i-1][0]+data[i-2][0],data[i-1][1]+data[i-2][1]])
-
 for i in range(n):
-  num=int(sys.stdin.readline())
-  print(data[num][0],data[num][1])
+  data.append(list(map(int,input().split())))
+dp=[[0,0,0] for _ in range(n)]
+dp[0]=data[0]
+for i in range(1,n):
+  dp[i][0]=data[i][0]+min(dp[i-1][1],dp[i-1][2])
+  print(data[i],dp[i-1],dp)
+  dp[i][1]=data[i][1]+min(dp[i-1][0],dp[i-1][2])
+  dp[i][2]=data[i][2]+min(dp[i-1][0],dp[i-1][1])
+
+print(dp)
+print(min(dp[n-1]))
